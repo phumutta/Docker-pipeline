@@ -1,4 +1,4 @@
-FROM node:boron
+FROM node:8.11-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 

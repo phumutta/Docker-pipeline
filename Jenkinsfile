@@ -21,6 +21,7 @@ pipeline {
       }
       stage('test build'){
         steps{
+            
             // sh '/usr/local/bin/docker run --name node-pipeline-jenkins -p 80:5000 phumutta/node-pipeline'
             // sh "/usr/local/bin/docker rm node-pipeline-jenkins"
             sh "/usr/local/bin/docker push phumutta/node-pipeline"
