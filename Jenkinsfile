@@ -9,7 +9,7 @@ pipeline {
       
         stage('Build') {
             steps{
-                sh 'docker build -t phumutta/node-pipeline .'
+                docker build -t phumutta/node-pipeline .
             }
 
         }
