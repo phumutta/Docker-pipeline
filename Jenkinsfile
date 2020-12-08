@@ -20,14 +20,15 @@ pipeline {
       }
       stage('test build'){
         steps{
-            sh '/usr/local/bin/docker images'
+            sh '/usr/local/bin/docker run --name express -p 80:5000 phumutta/node-pipeline'
         }
     }
     
         stage('test'){
             steps{
-                sh "/usr/local/bin/docker "
-                // sh 'docker run --name express -p 80:5000 phumutta/node-pipeline'sh "docker rmi $imagename:$BUILD_NUMBER"
+                sh "/usr/local/bin/docker  "
+                //  sh 'docker run --name express -p 80:5000 phumutta/node-pipeline'
+                //  sh "docker rmi $imagename:$BUILD_NUMBER"
                 // sh "docker rmi $imagename:latest"       
                 // echo "$USER"
             }
