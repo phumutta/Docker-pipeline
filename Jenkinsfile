@@ -21,6 +21,7 @@ pipeline {
       stage('test build'){
         steps{
             sh '/usr/local/bin/docker run --name express -p 80:5000 phumutta/node-pipeline'
+            sh "/usr/local/bin/docker rmi $imagename"
         }
     }
     
