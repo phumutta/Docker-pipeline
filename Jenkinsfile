@@ -5,7 +5,7 @@ pipeline {
     }
     agent any
 
-    
+
  
     stages {
         stage("pull"){
@@ -14,32 +14,15 @@ pipeline {
             }
         }
       
-        // stage('Build') {
-        //     steps{
-        //        dockerImage = docker.build imagename
-        //     }
-
-        // }
-        // stage('test build'){
-        //     steps{
-        //         docker.withRegistry( '', registryCredential ) {
-        //         dockerImage.push("$BUILD_NUMBER")
-        //         dockerImage.push('latest')
-        //         }   
-        //     }
-        // }
+    
         stage('test'){
             steps{
                 sh"docker"
                 // sh 'docker run --name express -p 80:5000 phumutta/node-pipeline'sh "docker rmi $imagename:$BUILD_NUMBER"
                 // sh "docker rmi $imagename:latest"       
+            }
         }
-    }
     
-     post { 
-        always { 
-            cleanWs()
-        }
+
     }
-}
 }
