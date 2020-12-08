@@ -4,6 +4,8 @@ pipeline {
     registryCredential = 'phumutta-Dockerhub'
     }
     agent any
+
+    
  
     stages {
         stage("pull"){
@@ -34,6 +36,10 @@ pipeline {
         }
     }
     
-   
+     post { 
+        always { 
+            cleanWs()
+        }
+    }
 }
 }
