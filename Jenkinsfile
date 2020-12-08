@@ -17,9 +17,10 @@ pipeline {
     
         stage('test'){
             steps{
-                sh"docker"
+                // sh"docker"
                 // sh 'docker run --name express -p 80:5000 phumutta/node-pipeline'sh "docker rmi $imagename:$BUILD_NUMBER"
                 // sh "docker rmi $imagename:latest"       
+                echo "$USER"
             }
         }
     
