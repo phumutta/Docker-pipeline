@@ -1,13 +1,7 @@
 pipeline {
-    agent {
-        docker { image 'node:14-alpine' }
-    }
+    agent any
     stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
+      
         stage('Build') {
             steps{
                 sh 'docker build -t phumutta/node-pipeline .'
