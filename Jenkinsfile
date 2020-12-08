@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+    imagename = "phumutta/test-pipeline"
+    registryCredential = 'phumutta-Dockerhub'
+    }
     stages {
         stage("pull"){
             steps{
@@ -9,19 +13,22 @@ pipeline {
       
         stage('Build') {
             steps{
-                sh 'docker build -t phumutta/node-pipeline .'
+               dockerImage = docker.build imagename
             }
 
         }
         stage('test build'){
             steps{
-                sh 'docker images'
+                docker.withRegistry( '', registryCredential ) {
+                dockerImage.push("$BUILD_NUMBER")
+                dockerImage.push('latest')
+                }   
             }
         }
         stage('test'){
             steps{
-                sh 'docker run --name express -p 80:5000 phumutta/node-pipeline'
-            }
+                sh 'docker run --name express -p 80:5000 phumutta/node-pipeline'sh "docker rmi $imagename:$BUILD_NUMBER"
+sh "docker rmi $imagename:latest"       
         }
     }
     
