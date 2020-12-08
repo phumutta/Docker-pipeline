@@ -11,10 +11,14 @@ pipeline {
     }
     stage('Build') {
         steps{
-            sh 'docker build -t phumutta/node-pipeline .
-'
+            sh 'docker build -t phumutta/node-pipeline .'
         }
 
+    }
+    stage('test build'){
+        steps{
+            sh 'docker images'
+        }
     }
     stage('test'){
         steps{
